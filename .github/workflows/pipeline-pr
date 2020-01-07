@@ -1,12 +1,9 @@
-name: Node CI
+name: Pull Request CI
 
 on: 
-  push:
-    branches:
-      - master
   pull_request:
-    branches: 
-      - master
+    branches:
+    - master
 jobs:
   build:
 
@@ -27,5 +24,7 @@ jobs:
         npm ci
         npm run build --if-present
         npm test
+        npm report-coverage
+        npm audit
       env:
         CI: true
